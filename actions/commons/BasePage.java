@@ -2,6 +2,7 @@ package commons;
 
 import java.awt.event.ItemEvent;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import org.openqa.selenium.Alert;
@@ -18,11 +19,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
-	
-	public By getByXpath(String xpathLocator) {
+	public static BasePage getBasePageObject() {
+		return new BasePage();
+		
+	}
+	private By getByXpath(String xpathLocator) {
 		return By.xpath(xpathLocator);
 	}
+	private WebElement getWebElement(WebDriver driver, String xpathLocator) {
+			return driver.findElement(getByXpath(xpathLocator));
+		}
+		
+	public List<WebElement> getWebElements(WebDriver driver, String xpathLocator) {
+		return driver.findElements(getByXpath(xpathLocator));
+	}
+		
+		
+		public int generalFakeNumber() {
+		Random rand = new Random();
+		return rand.nextInt(99999);
+	}
 	
+	public void openPageUrl(WebDriver driver, String pageUrl) {
+			driver.get(pageUrl);
+	}
 	public String getPageTitle(WebDriver driver ) {
 		return driver.getTitle();
 	}
@@ -101,15 +121,7 @@ public class BasePage {
 			
 		}
 	}
-	public WebElement getWebElement(WebDriver driver, String xpathLocator) {
-		return driver.findElement(getByXpath(xpathLocator));
-	}
 	
-	
-	public List<WebElement> getWebElements(WebDriver driver, String xpathLocator) {
-		return driver.findElements(getByXpath(xpathLocator));
-		
-	}
 	
 	public void clickToElement(WebDriver driver, String xpathLocator){
 		getWebElement(driver, xpathLocator).click();
