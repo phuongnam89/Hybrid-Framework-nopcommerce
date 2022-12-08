@@ -2,7 +2,7 @@
 <suite name="NopCommerce">
   <test name="Run On Firefox">
     <classes>
-      <class name="com.nopcommerce.user.Topic_02_Apply_Base_Page_II"/>
+      <class name="com.nopcommerce.user.Topic_03_Page_Object_Pattern"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
