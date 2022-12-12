@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
-
+	
 	public static BasePage getBasePageObject() {
 		return new BasePage();
 		
@@ -33,6 +33,16 @@ public class BasePage {
 	public List<WebElement> getWebElements(WebDriver driver, String xpathLocator) {
 		return driver.findElements(getByXpath(xpathLocator));
 	}
+	
+	public void clearTextInTextbox(WebDriver driver, String xpathLocator) {
+		waitForElementVisible(driver, xpathLocator);
+		getWebElement(driver, xpathLocator).clear();
+	}
+	public void selectFromDropdown(WebDriver driver,String xpathLocator, String textValue) {
+		waitForElementVisible(driver, xpathLocator);
+		new Select(getWebElement(driver, xpathLocator)).selectByVisibleText(textValue); 
+	}
+	
 		
 		
 		public int generalFakeNumber() {
