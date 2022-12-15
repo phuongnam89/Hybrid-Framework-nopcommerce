@@ -18,7 +18,7 @@ public class RegisterPageUI {
 	public static final String REGISTER_SUCCESS_MESSAGE = "//div[@class='result']";
 	public static final String LOGOUT_LINK = "//a[text()='Log out']";
 	public static final String EXISTING_EMAIL_ERROR_MESSAGE = "//li[text()= 'The specified email already exists']";
-
-
+	public static final String MY_ACCOUNT_LINK = "//a[@class='ico-account']";
+	
 
 }
