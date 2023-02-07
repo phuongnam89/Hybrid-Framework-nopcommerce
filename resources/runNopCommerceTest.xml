@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="NopCommerce">
+
+<listeners>
+	<listener class-name="commons.MethodListener"></listener>
+	<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+</listeners>
+
+        
+<parameter name ="url" value = "https://www.facebook.com/" />
+	
   <test name="Run On Firefox">
   <parameter name="browser" value="firefox"/>
     <classes>
-      <class name="com.nopcommerce.user.Topic_05_My_Account"/>
+      <class name="com.nopcommerce.user.Topic_14_Log_ReportNG"/>
     </classes>
   </test> <!-- Test -->
+  
+ 	
   
 </suite> <!-- Suite -->
 
