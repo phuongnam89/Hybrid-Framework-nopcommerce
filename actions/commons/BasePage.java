@@ -1,6 +1,7 @@
 package commons;
 
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -35,6 +36,7 @@ import PageObjects.RewardPointsPageObject;
 import PageObjects.SearchPageObject;
 import PageObjectsJQuery.uploadFiles.HomePageUI;
 import PageUIs.BasePageUI;
+import PageUisNewTest.MyAccountPageUI;
 import pageUiIs.jQuery.uploadFile.BasePageJqueryUI;
 
 public class BasePage {
@@ -221,12 +223,20 @@ public class BasePage {
 			return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).getText();
 		}
 		
+		protected String getElementAttribute(WebDriver driver, String locatorType, String attributeName) {
+			return getWebElement(driver,locatorType).getAttribute(attributeName);
+		}
+		
+		protected String getElementAttribute(WebDriver driver, String locatorType, String attributeName, String...dynamicValues) {
+			return getWebElement(driver,getDynamicXpath(locatorType, dynamicValues)).getAttribute(attributeName);
+		}
+		
 		protected void selectItemInDropdown (WebDriver driver, String locatorType, String textItem, String...dynamicValues) {
 		Select select = new Select(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
 		select.selectByVisibleText(textItem);
 	}
 	
-		protected String getFristSelectedItemInDropdown (WebDriver driver, String locatorType, String...dynamicValues) {
+		protected String getFirstSelectedItemInDropdown (WebDriver driver, String locatorType, String...dynamicValues) {
 		Select select = new Select(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
 		return select.getFirstSelectedOption().getText();
 		
@@ -287,9 +297,21 @@ public class BasePage {
 				break;
 			}
 		}
-		
-		
+		}
+		protected void selectItemInCustomDropdownByName (WebDriver driver,String xpathChild, String expectedItem, String...dynamicValue) {
+			WebDriverWait explicitWait = new WebDriverWait(driver, 30);
+			List<WebElement> allItem = explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(getDynamicXpath(xpathChild, dynamicValue))));
+			for (WebElement item : allItem) {
+				if (item.getText().trim().equals(expectedItem)) {
+					JavascriptExecutor jsExcecutor = (JavascriptExecutor) driver;
+					//jsExcecutor.executeScript("argument[0].scrollIntoView(true);", item);
+					sleepInSecond(1);
+					item.click();
+					break;
+			
+				}
 	}
+		}
 		
 		protected String getAttributeValue (WebDriver driver, String xpathLocator, String attributeName) {
 		return getWebElement(driver, xpathLocator).getAttribute(attributeName);
@@ -689,7 +711,54 @@ public class BasePage {
 				return getWebElement(driver, locator).isDisplayed();
 			}
 			
-		
+			protected boolean isElementDisplayed(WebDriver driver, String locatorType, String...dynamicValues) {
+				return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isDisplayed();
+			}
+			/**Enter to dynamic Textbox by ID
+			 * @author Nam Phuong
+			 * @param driver
+			 * @param textboxID
+			 * @param value
+			 * @return
+			 */
+			public void inputToTextboxByID(WebDriver driver, String textboxID, String value) {
+				waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID,textboxID);
+				sendkeyElement(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, value, textboxID);	
+			}
+			
+			
+			/**
+			 * Select item in dropdown by Name attribute
+			 * @param driver
+			 * @param dropdownAttributeName
+			 * @author Nam Phuong
+			 */
+			public void selectDropDownByName(WebDriver driver, String dropdownAttributeName, String itemValue) {
+				waitForElementClickable(driver,BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownAttributeName);
+				selectItemInDropdown(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, itemValue, dropdownAttributeName);
+			}
+			
+			public void checkToRadioByLabel(WebDriver driver, String labelValue) {
+				waitForElementClickable(driver, BasePageUI.DYNAMIC_RADIO_BY_LABEL, labelValue);
+				checkToDefaultCheckBoxOrRadio(driver, BasePageUI.DYNAMIC_RADIO_BY_LABEL, labelValue);
+			}
+
+			public void checkToCheckboxByLabel(WebDriver driver, String labelValue) {
+				waitForElementClickable(driver, BasePageUI.DYNAMIC_CHECKBOX_BY_LABEL, labelValue);	
+				checkToDefaultCheckBoxOrRadio(driver, BasePageUI.DYNAMIC_CHECKBOX_BY_LABEL, labelValue);
+			}
+			
+			/**
+			 * Get Value in textbox by textbox ID
+			 * @param driver
+			 * @param textboxID
+			 * @return
+			 */
+			public String getTextboxValueByID(WebDriver driver, String textboxID) {
+				waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
+				return getElementAttribute(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID,"value", textboxID);
+				
+			}
 	
 		protected void sleepInSecond(long timeInSecond) {
 		try {
@@ -699,8 +768,182 @@ public class BasePage {
 		}
 }
 
-	
-}
+		//NopCommerce Live Coding
+		
+		protected void clearTextboxByDeleteKeyboardButton(WebDriver driver, String locatorType, String...dynamicValues) {
+			getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+			getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).sendKeys(Keys.DELETE);
+		}
+		/**Clear Text Box By Delete Key and ID Value
+		 * @param driver
+		 * @param dynamicValues
+		 */
+		public void clearTextboxByID(WebDriver driver,String...dynamicValues) {
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ID, dynamicValues);
+			clearTextboxByDeleteKeyboardButton(driver, BasePageUI.LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ID, dynamicValues);
+		}
+		public Object getElementAttributeValueByID(WebDriver driver,String textboxID, String attributeName) {
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ID, textboxID);		
+			return getElementAttribute(driver, BasePageUI.LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ID,attributeName, textboxID);
+		}
+		
+		/**Click To Link By Text
+		 * @param driver
+		 * @param textValue
+		 */
+		public void clickToLinkByText(WebDriver driver, String textValue) {
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
+			clickToElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
+		}
+		
+		/**Check Link is Displayed
+		 * @param driver
+		 * @param textValue
+		 * @return
+		 */
+		public boolean checkLinkDisplayedByText(WebDriver driver, String textValue) {
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
+			return isElementDisplayed(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
+			
+		}
+		/**Click To Button By Text
+		 * @param driver
+		 * @param textValue
+		 */
+		public void clickToButtonByText(WebDriver driver, String textValue ) {
+			waitForElementClickable(driver,BasePageUI.LIVE_CODING_DYNAMIC_BUTTON_BY_TEXT,textValue);
+			clickToElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_BUTTON_BY_TEXT,textValue,textValue);
+		}
+		
+		/**Click To Button By ID
+		 * @param driver
+		 * @param idValue
+		 */
+		public void clickToButtonByID(WebDriver driver, String idValue) {
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_BUTTON_BY_ID, idValue);
+			clickToElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_BUTTON_BY_ID, idValue);
+		}
+		
+		/**Get Error Message By ID
+		 * @param driver
+		 * @param idValue
+		 * @return
+		 */
+		public String getErrorMessageByID(WebDriver driver, String idValue) {
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_ERROR_MESSAGE_BY_ID, idValue);
+			return getElementText(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_ERROR_MESSAGE_BY_ID, idValue).trim();
+		}
+		
+		/**Get Message Displayed By Class
+		 * @param driver
+		 * @param idValue
+		 * @return
+		 */
+		/**
+		 * @param driver
+		 * @param idValue
+		 * @return
+		 */
+		public String getMessageByClass(WebDriver driver, String idValue) {
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_ERROR_MESSAGE_BY_CLASS, idValue);
+			return getElementText(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_ERROR_MESSAGE_BY_CLASS, idValue).trim();
+		}
+		
+		public Object getSuccessMessageByClass(WebDriver driver, String value) {
+			waitForElementVisible(driver,BasePageUI.LIVE_CODING_DYNAMIC_GET_SUCCESS_MESSAGE_BY_CLASS,value);
+			return getElementText(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_SUCCESS_MESSAGE_BY_CLASS,value);
+		}
+		/**Get Information Text By Class
+		 * @param driver
+		 * @param Value
+		 * @return
+		 */
+		public String getInformationByClass(WebDriver driver, String value) {
+			waitForElementVisible(driver,BasePageUI.LIVE_CODING_DYNAMIC_GET_INFORMATION_BY_CLASS,value);
+			return getElementText(driver,BasePageUI.LIVE_CODING_DYNAMIC_GET_INFORMATION_BY_CLASS,value);
+		}
+
+		
+		/**Input To Textbox By ID
+		 * @param driver
+		 * @param idValue
+		 * @param textValue
+		 */
+		public void enterToTextboxByID(WebDriver driver,String idValue, String textValue) {
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ID, idValue);
+			sendkeyElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ID,textValue, idValue);
+			
+		}
+		/**Check To Radio By ID
+		 * @param driver
+		 * @param idValue
+		 */
+		public void checkToRadioByID(WebDriver driver, String idValue) {
+			waitForElementClickable(driver,BasePageUI.LIVE_CODING_DYNAMIC_RADIO_BY_ID ,idValue);
+			checkToDefaultCheckBoxOrRadio(driver,BasePageUI.LIVE_CODING_DYNAMIC_RADIO_BY_ID ,idValue);
+		}
+		/**Check To Checkbox By ID
+		 * @param driver
+		 * @param idValue
+		 */
+		public void checkToCheckboxByID(WebDriver driver, String idValue) {
+			waitForElementClickable(driver,BasePageUI.LIVE_CODING_DYNAMIC_RADIO_BY_ID ,idValue);
+			checkToDefaultCheckBoxOrRadio(driver,BasePageUI.LIVE_CODING_DYNAMIC_RADIO_BY_ID ,idValue);
+		}
+
+		
+		/**Select From  Dropdown By Name
+		 * @param driver
+		 * @param day
+		 * @param dayValue
+		 * @param month
+		 * @param monthValue
+		 * @param year
+		 * @param yearValue
+		 */
+		public void selectDropdownByName(WebDriver driver, String day,String dayValue,String month, String monthValue, String year, String yearValue) {
+			waitForElementClickable(driver,BasePageUI.LIVE_CODING_DYNAMIC_DROPDOWN_BY_NAME,day);
+			clickToElement(driver,BasePageUI.LIVE_CODING_DYNAMIC_DROPDOWN_BY_NAME,day);
+			selectItemInCustomDropdownByName(driver,BasePageUI.LIVE_CODING_DYNAMIC_SELECT_FROM_DROPDOWN,dayValue,day);
+			
+			waitForElementClickable(driver,BasePageUI.LIVE_CODING_DYNAMIC_DROPDOWN_BY_NAME,month);
+			clickToElement(driver,BasePageUI.LIVE_CODING_DYNAMIC_DROPDOWN_BY_NAME,month);
+			selectItemInCustomDropdownByName(driver,BasePageUI.LIVE_CODING_DYNAMIC_SELECT_FROM_DROPDOWN,monthValue,month);
+			
+			waitForElementClickable(driver,BasePageUI.LIVE_CODING_DYNAMIC_DROPDOWN_BY_NAME,year);
+			clickToElement(driver,BasePageUI.LIVE_CODING_DYNAMIC_DROPDOWN_BY_NAME,year);
+			selectItemInCustomDropdownByName(driver,BasePageUI.LIVE_CODING_DYNAMIC_SELECT_FROM_DROPDOWN,yearValue,year);
+		}
+		/**Select Default Dropdown By ID
+		 * @param driver
+		 * @param idValue
+		 * @param expectedValue
+		 */
+		public void selectDefaultDropdownByID(WebDriver driver, String idValue, String expectedValue) {
+			waitForElementClickable(driver,BasePageUI.LIVE_CODING_DYNAMIC_DEFAULT_DROPDOWN_BY_ID,idValue);
+			selectItemInDropdown(driver, BasePageUI.LIVE_CODING_DYNAMIC_DEFAULT_DROPDOWN_BY_ID,expectedValue,idValue);
+		}
+		/**Click To Button By JSExcutor
+		 * @param driver
+		 * @param textValue
+		 */
+		public void clickToButtonByJS(WebDriver driver, String textValue) {
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT,textValue);
+			clickToElementByJS(driver,BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT,textValue);
+		}
+		/**Input To Text Area By ID
+		 * @param driver
+		 * @param idValue
+		 * @param textValue
+		 */
+		public void inputToTextAreaByID(WebDriver driver,String idValue, String textValue) {
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_COMMEND_TEXT_BOX_BY_ID, idValue);
+			sendkeyElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_COMMEND_TEXT_BOX_BY_ID,textValue, idValue);
+		}
+
+}	
+
+
 	
 
 
