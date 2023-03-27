@@ -200,5 +200,12 @@ protected WebDriver getBrowserDriver(String browserName, String appUrl) {
 		Random rand = new Random();
 		return rand.nextInt(99999);
 	}
+	protected void sleepInSecond(long timeInSecond) {
+		try {
+			Thread.sleep(timeInSecond * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }
 

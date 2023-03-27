@@ -434,7 +434,7 @@ public class BasePage {
 		return textActual.equals(textExpected);
 	}
 
-		protected void scrollToBottomPage(WebDriver driver) {
+		public void scrollToBottomPage(WebDriver driver) {
 		JavascriptExecutor jsExecutor;
 		jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("window.scrollBy(0,document.body.scrollHeight)");
@@ -767,7 +767,24 @@ public class BasePage {
 			e.printStackTrace();
 		}
 }
+		public boolean isPageLoadedSuccess(WebDriver driver) {
+			WebDriverWait explicitWait = new WebDriverWait(driver, 30);
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
+				@Override
+				public Boolean apply(WebDriver driver) {
+					return (Boolean) jsExecutor.executeScript("return (window.jQuery != null) && (jQuery.active === 0);");
+				}
+			};
 
+			ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
+				@Override
+				public Boolean apply(WebDriver driver) {
+					return jsExecutor.executeScript("return document.readyState").toString().equals("complete");
+				}
+			};
+			return explicitWait.until(jQueryLoad) && explicitWait.until(jsLoad);
+		}
 		//NopCommerce Live Coding
 		
 		protected void clearTextboxByDeleteKeyboardButton(WebDriver driver, String locatorType, String...dynamicValues) {
@@ -794,6 +811,15 @@ public class BasePage {
 		public void clickToLinkByText(WebDriver driver, String textValue) {
 			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
 			clickToElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
+		}
+		public void clickToLinkBySpanText(WebDriver driver, String textValue) {
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_SPAN_TEXT, textValue);
+			clickToElementByJS(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_SPAN_TEXT, textValue);
+		}
+		
+		public void clickToLinkByClass(WebDriver driver, String classValue) {
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_CLASS, classValue);
+			clickToElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_CLASS, classValue);
 		}
 		
 		/**Check Link is Displayed
@@ -845,14 +871,19 @@ public class BasePage {
 		 * @return
 		 */
 		public String getMessageByClass(WebDriver driver, String idValue) {
-			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_ERROR_MESSAGE_BY_CLASS, idValue);
-			return getElementText(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_ERROR_MESSAGE_BY_CLASS, idValue).trim();
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_MESSAGE_BY_CLASS, idValue);
+			return getElementText(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_MESSAGE_BY_CLASS, idValue).trim();
 		}
 		
 		public Object getSuccessMessageByClass(WebDriver driver, String value) {
 			waitForElementVisible(driver,BasePageUI.LIVE_CODING_DYNAMIC_GET_SUCCESS_MESSAGE_BY_CLASS,value);
 			return getElementText(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_SUCCESS_MESSAGE_BY_CLASS,value);
 		}
+		public void clickToCloseButtonAtMessage(WebDriver driver) {
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_CLOSE_ICON_AT_SUCCESS_MESSAGE);
+			clickToElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_CLOSE_ICON_AT_SUCCESS_MESSAGE);
+		}
+			
 		/**Get Information Text By Class
 		 * @param driver
 		 * @param Value
@@ -940,7 +971,31 @@ public class BasePage {
 			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_COMMEND_TEXT_BOX_BY_ID, idValue);
 			sendkeyElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_COMMEND_TEXT_BOX_BY_ID,textValue, idValue);
 		}
-
+		
+		/**Get Value Displayed At Table
+		 * @param driver
+		 * @param tableClass
+		 * @param headerName
+		 * @param rowIndex
+		 * @return
+		 */
+		public Object getValueDisplayedInTableClassAtColumnNameAndRowIndex(WebDriver driver, String tableClass, String headerName,String rowIndex) {
+			int columnIndex = getElementSize(driver, BasePageUI.LIVE_CODING_DYNAMIC_HEADER_BY_ID_AND_TEXT_NAME, tableClass,headerName)+1;		
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,rowIndex,String.valueOf(columnIndex));
+			return getElementText(driver, BasePageUI.LIVE_CODING_DYNAMIC_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,rowIndex,String.valueOf(columnIndex));
+		}
+		
+		/**Click To Check Box Add To Cart At Table
+		 * @param driver
+		 * @param tableClass
+		 * @param headerName
+		 * @param rowIndex
+		 */
+		public void clickToAddToCartCheckBoxInTableClassAtColumnNameAndRowIndex(WebDriver driver, String tableClass, String headerName,String rowIndex) {
+			int columnIndex = getElementSize(driver, BasePageUI.LIVE_CODING_DYNAMIC_HEADER_BY_ID_AND_TEXT_NAME, tableClass,headerName)+1;		
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,rowIndex,String.valueOf(columnIndex));
+			checkToDefaultCheckBoxOrRadio(driver, BasePageUI.LIVE_CODING_DYNAMIC_CHECK_BOX_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,rowIndex,String.valueOf(columnIndex));
+		}
 }	
 
 
