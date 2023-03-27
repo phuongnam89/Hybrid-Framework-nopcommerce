@@ -1,0 +1,96 @@
+[INFO ] [2023-01-30 11:59:04,306]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-30 11:59:07,546]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-30 11:59:11,464]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-30 12:02:30,469]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-30 12:02:33,718]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-30 12:02:37,637]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-30 17:28:32,995]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-30 17:28:36,246]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-30 17:28:40,160]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-31 09:34:52,976] Create Account - Step 1: Click To New Account Button
+[INFO ] [2023-01-31 09:34:53,325] Create Account - Step 2: Enter to Email Address Textbox
+[INFO ] [2023-01-31 09:34:56,748] Create Account - Step 3:Verify Confirm Email Textbox Display
+[INFO ] [2023-01-31 09:35:26,845] Verify Element Undisplay In Dom - Step 1: Enter to Email Address Textbox
+[INFO ] [2023-01-31 09:35:29,956] Verify Element Undisplay In Dom - Step 2: Verify Confirm Email Textbox UnDisplay
+[INFO ] [2023-01-31 09:35:30,087]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-31 09:35:30,090] Verify Element Undisplay Not In Dom - Step 1: Close Register Form
+[INFO ] [2023-01-31 09:35:33,371] Verify Element Undisplay Not In Dom - Step 2: Verify Confirm Email Textbox UnDisplay
+[INFO ] [2023-01-31 09:35:43,490]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-31 09:36:50,171] Create Account - Step 1: Click To New Account Button
+[INFO ] [2023-01-31 09:36:50,483] Create Account - Step 2: Enter to Email Address Textbox
+[INFO ] [2023-01-31 09:36:53,893] Create Account - Step 3:Verify Confirm Email Textbox Display
+[INFO ] [2023-01-31 09:37:23,929] Verify Element Undisplay In Dom - Step 1: Enter to Email Address Textbox
+[INFO ] [2023-01-31 09:37:27,046] Verify Element Undisplay In Dom - Step 2: Verify Confirm Email Textbox UnDisplay
+[INFO ] [2023-01-31 09:37:57,053] Verify Element Undisplay Not In Dom - Step 1: Close Register Form
+[INFO ] [2023-01-31 09:38:00,835] Verify Element Undisplay Not In Dom - Step 2: Verify Confirm Email Textbox UnDisplay
+[INFO ] [2023-01-31 09:38:00,967]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-31 15:28:51,211] Create Account - Step 1: Click To New Account Button
+[INFO ] [2023-01-31 15:28:51,528] Create Account - Step 2: Enter to Email Address Textbox
+[INFO ] [2023-01-31 15:28:54,905] Create Account - Step 3:Verify Confirm Email Textbox Display
+[INFO ] [2023-01-31 15:29:24,977] Verify Element Undisplay In Dom - Step 1: Enter to Email Address Textbox
+[INFO ] [2023-01-31 15:29:28,085] Verify Element Undisplay In Dom - Step 2: Verify Confirm Email Textbox UnDisplay
+[INFO ] [2023-01-31 15:29:53,979] Verify Element Undisplay Not In Dom - Step 1: Close Register Form
+[INFO ] [2023-01-31 15:37:39,666] Create Account - Step 1: Click To New Account Button
+[INFO ] [2023-01-31 15:37:39,983] Create Account - Step 2: Enter to Email Address Textbox
+[INFO ] [2023-01-31 15:37:43,485] Create Account - Step 3:Verify Confirm Email Textbox Display
+[INFO ] [2023-01-31 15:38:14,005] Verify Element Undisplay In Dom - Step 1: Enter to Email Address Textbox
+[INFO ] [2023-01-31 15:38:17,113] Verify Element Undisplay In Dom - Step 2: Verify Confirm Email Textbox UnDisplay
+[INFO ] [2023-01-31 15:38:47,650] Verify Element Undisplay Not In Dom - Step 1: Close Register Form
+[INFO ] [2023-01-31 15:38:50,932] Verify Element Undisplay Not In Dom - Step 2: Verify Confirm Email Textbox UnDisplay
+[INFO ] [2023-01-31 15:39:01,038]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-01-31 17:57:33,107]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-01 11:09:44,729]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-02 10:53:14,185]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-03 10:03:27,401]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-03 10:24:43,220]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-03 10:26:25,864]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-03 10:55:01,368]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-03 10:57:04,715]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-03 10:59:30,960]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-03 11:21:02,580]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-03 11:25:06,266]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 11:13:30,893]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 11:14:45,177]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 11:55:27,312]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:11:27,524]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:13:47,130]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:14:17,261] OS name = Windows 10
+[INFO ] [2023-02-09 14:14:17,261] Driver instance name = firefoxdriver: firefox on windows (99c11fb0-e5da-4103-bd08-29d69a90e0bf)
+[INFO ] [2023-02-09 14:15:17,560]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:16:36,180]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:16:37,669] OS name = Windows 10
+[INFO ] [2023-02-09 14:16:37,669] Driver instance name = firefoxdriver: firefox on windows (99fbdb76-9a2c-425b-9c85-48acb87bc433)
+[INFO ] [2023-02-09 14:40:38,538]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:40:40,084] OS name = Windows 10
+[INFO ] [2023-02-09 14:40:40,084] Driver instance name = firefoxdriver: firefox on windows (9b58d132-bfc0-4398-8cd8-463aaf5620c7)
+[INFO ] [2023-02-09 14:43:59,395]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:44:01,346] OS name = Windows 10
+[INFO ] [2023-02-09 14:44:01,347] Driver instance name = firefoxdriver: firefox on windows (cdbb477b-2ec1-4d7e-8df3-25640ce0459c)
+[INFO ] [2023-02-09 14:46:12,373]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:46:14,348] OS name = Windows 10
+[INFO ] [2023-02-09 14:46:14,349] Driver instance name = firefoxdriver: firefox on windows (2dc9da1b-7d7b-48ff-9563-1a1eed6bbe75)
+[INFO ] [2023-02-09 14:46:33,905]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:46:35,618] OS name = Windows 10
+[INFO ] [2023-02-09 14:46:35,618] Driver instance name = firefoxdriver: firefox on windows (7e6eeed0-35ce-4eed-b240-2f93f5ea0627)
+[INFO ] [2023-02-09 14:50:17,419]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:50:19,163] OS name = Windows 10
+[INFO ] [2023-02-09 14:50:19,163] Driver instance name = firefoxdriver: firefox on windows (f0e134c0-2dae-486e-97fd-1ea39c2ed2d3)
+[INFO ] [2023-02-09 14:54:36,407]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:54:38,094] OS name = Windows 10
+[INFO ] [2023-02-09 14:54:38,094] Driver instance name = firefoxdriver: firefox on windows (4b566760-9abd-49ac-bccb-436f6e3db221)
+[INFO ] [2023-02-09 14:55:23,762]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:55:26,179] OS name = Windows 10
+[INFO ] [2023-02-09 14:55:26,179] Driver instance name = firefoxdriver: firefox on windows (41bca0d2-a361-4298-8d45-5291033ab375)
+[INFO ] [2023-02-09 14:56:16,694]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:56:48,186] OS name = Windows 10
+[INFO ] [2023-02-09 14:56:48,186] Driver instance name = firefoxdriver: firefox on windows (3da2a445-a836-4ee0-8f36-85603d0cf19a)
+[INFO ] [2023-02-09 14:58:10,282]  -------------------------- PASSED -------------------------- 
+[INFO ] [2023-02-09 14:58:12,803] OS name = Windows 10
+[INFO ] [2023-02-09 14:58:12,803] Driver instance name = firefoxdriver: firefox on windows (8bd6c397-110c-4241-91cd-ea8f789ec9a6)
+[INFO ] [2023-02-23 10:35:33,771] OS name = Windows 10
+[INFO ] [2023-02-23 10:35:33,772] 
+[INFO ] [2023-02-24 23:12:20,728] Create Account - Step 1: Click To New Account Button
+[INFO ] [2023-02-24 23:12:21,080] Create Account - Step 2: Enter to Email Address Textbox
+[INFO ] [2023-02-24 23:12:24,692] Create Account - Step 3:Verify Confirm Email Textbox Display
+[INFO ] [2023-02-24 23:12:24,838] Verify Element Undisplay In Dom - Step 1: Enter to Email Address Textbox
+[INFO ] [2023-02-24 23:12:24,853] Verify Element Undisplay Not In Dom - Step 1: Close Register Form

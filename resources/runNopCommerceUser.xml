@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NopCommerce">
+
+<listeners>
+	<listener class-name="commons.MethodListener"></listener>
+	<listener class-name="ReportConfig.ExtentTestListener" />
+	<listener class-name="org.uncommons.reportng.HTMLReporter" />
+	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />		
+</listeners>   
+<parameter name ="environment" value = "DEV" />	
+  
+  <test name="Run On Firefox">
+  <parameter name="browser" value="firefox"/>
+    <classes>
+    <class name="liveCodingcom.nopcommerce.user.LiveCoding_Wishlist"/>  
+   </classes>    
+  </test> <!-- Test -->
+  
+  <parameter name ="environment" value = "DEV" />	
+  
+  <test name="Run On Chrome">
+  <parameter name="browser" value="chrome"/>
+    <classes>
+    <class name="liveCodingcom.nopcommerce.user.LiveCoding_Wishlist"/>  
+   </classes>    
+  </test> <!-- Test -->
+ 
+</suite> <!-- Suite -->
+
