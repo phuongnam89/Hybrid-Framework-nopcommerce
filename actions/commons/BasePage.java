@@ -2,12 +2,15 @@ package commons;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -88,6 +91,7 @@ public class BasePage {
 	public List<WebElement> getWebElements(WebDriver driver, String xpathLocator) {
 		return driver.findElements(getByLocator(xpathLocator));
 	}
+	
 	
 	public void clearTextInTextbox(WebDriver driver, String xpathLocator) {
 		waitForElementVisible(driver, xpathLocator);
@@ -953,6 +957,7 @@ public class BasePage {
 		public void selectDefaultDropdownByID(WebDriver driver, String idValue, String expectedValue) {
 			waitForElementClickable(driver,BasePageUI.LIVE_CODING_DYNAMIC_DEFAULT_DROPDOWN_BY_ID,idValue);
 			selectItemInDropdown(driver, BasePageUI.LIVE_CODING_DYNAMIC_DEFAULT_DROPDOWN_BY_ID,expectedValue,idValue);
+			sleepInSecond(2);
 		}
 		/**Click To Button By JSExcutor
 		 * @param driver
@@ -993,8 +998,37 @@ public class BasePage {
 		 */
 		public void clickToAddToCartCheckBoxInTableClassAtColumnNameAndRowIndex(WebDriver driver, String tableClass, String headerName,String rowIndex) {
 			int columnIndex = getElementSize(driver, BasePageUI.LIVE_CODING_DYNAMIC_HEADER_BY_ID_AND_TEXT_NAME, tableClass,headerName)+1;		
-			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,rowIndex,String.valueOf(columnIndex));
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,rowIndex,String.valueOf(columnIndex));
 			checkToDefaultCheckBoxOrRadio(driver, BasePageUI.LIVE_CODING_DYNAMIC_CHECK_BOX_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,rowIndex,String.valueOf(columnIndex));
+		}
+		
+		/**Sort By Ascending
+		 * @param driver
+		 * @param locatorType
+		 * @param dynamicValues
+		 * @return
+		 */
+		public boolean isProductPriceSortByAscendingByLambda(WebDriver driver,String locatorType, String...dynamicValues) {
+			List<WebElement> elementList =	getWebElements(driver, getDynamicXpath(locatorType, dynamicValues));
+			List<String> names = elementList.stream().map(n -> n.getText()).collect(Collectors.toList());
+			List<String> sortedName = new ArrayList<String>(names);
+			Collections.sort(sortedName);
+			return names.equals(sortedName);
+			
+		}
+		/**Sort By Descending
+		 * @param driver
+		 * @param locatorType
+		 * @param dynamicValues
+		 * @return
+		 */
+		public boolean isProductPriceSortByDescendingByLambda(WebDriver driver,String locatorType, String...dynamicValues) {
+			List<WebElement> elementList =	getWebElements(driver,getDynamicXpath(locatorType, dynamicValues));
+			List<String> names = elementList.stream().map(n -> n.getText()).collect(Collectors.toList());
+			List<String> sortedName = new ArrayList<String>(names);
+			Collections.sort(sortedName);
+			Collections.reverse(sortedName);
+			return names.equals(sortedName);
 		}
 }	
 

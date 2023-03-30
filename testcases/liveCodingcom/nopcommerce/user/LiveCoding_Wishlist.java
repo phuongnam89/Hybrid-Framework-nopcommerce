@@ -93,16 +93,18 @@ public class LiveCoding_Wishlist extends BaseTest{
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 8: Verify Your Wishlist Title");	
 		verifyEquals(wishlistPage.getWishlistValue(driver), "Wishlist of Nam Phuong");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 8: Open Shopping Cart Page");	
+		wishlistPage.clickToLinkByClass(driver, "ico-cart");
 
 	}
 	@Test
 	public void Wishlist_02_Add_product_To_Cart_From_Wishlist_Page(Method method) {
 		ExtentTestManager.startTest(method.getName(), "Wishlist: Add Product to Cart From Wishlist Page");
-		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
-		//wishlistPage.clickToLinkBySpanText(driver, "Wishlist");
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");		
 		wishlistPage.clickToLinkByClass(driver,"ico-wishlist");
-		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 2: Click To Add To Cart Check Box");	
 		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 2: Click To Add To Cart Check Box");	
 		wishlistPage.clickToAddToCartCheckBoxInTableClassAtColumnNameAndRowIndex(driver,"cart","Add to cart","1");
 
 		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 3: Click To Add To Cart Button");

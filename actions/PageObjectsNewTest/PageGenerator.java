@@ -24,4 +24,12 @@ WebDriver driver;
 			return new ShoppingCartPO(driver);
 	
 	}
+		public static ElectronicsPO getElectronicsPage(WebDriver driver) {
+			return new ElectronicsPO(driver);
+	
+	}
+		public static CellPhonesPO getCellPhonesPage(WebDriver driver) {
+			return new CellPhonesPO(driver);
+	
+	}
 }
