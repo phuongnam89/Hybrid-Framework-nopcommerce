@@ -90,14 +90,26 @@ public class LiveCoding_Sort_Display_Paging extends BaseTest{
 
 	}
 	
+	@Test
+	public void Sort_03_Price_Low_To_High(Method method) {
+		ExtentTestManager.startTest(method.getName(), "MyAccount: Address");
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		cellPhonesPage.selectDefaultDropdownByID(driver, "products-orderby", "Price: Low to High");
 	
-	public void MyAccount_03_Change_Password(Method method) {
-		
+		ExtentTestManager.getTest().log(Status.INFO, "Sort: - Step 1: Verify");
+		verifyTrue(cellPhonesPage.isProductPriceSortByAscending());
+
+
 	}
 	
-			
-	public void MyAccount_04_Add_Review(Method method) {
-		
+	@Test		
+	public void Sort_03_Price_High_To_Low(Method method) {
+		ExtentTestManager.startTest(method.getName(), "MyAccount: Address");
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		cellPhonesPage.selectDefaultDropdownByID(driver, "products-orderby", "Price: High to Low");
+	
+		ExtentTestManager.getTest().log(Status.INFO, "Sort: - Step 1: Verify");
+		verifyTrue(cellPhonesPage.isProductPriceSortByDescending());
 		
 	}
 			

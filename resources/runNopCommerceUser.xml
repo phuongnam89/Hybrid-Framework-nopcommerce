@@ -16,6 +16,15 @@
    </classes>    
   </test> <!-- Test -->
   
+  <parameter name ="environment" value = "DEV" />	
+  
+  <test name="Run On Chrome">
+  <parameter name="browser" value="chrome"/>
+    <classes>
+    <class name="liveCodingcom.nopcommerce.user.LiveCoding_Sort_Display_Paging"/>  
+   </classes>    
+  </test> <!-- Test -->
+  
  
 </suite> <!-- Suite -->
 

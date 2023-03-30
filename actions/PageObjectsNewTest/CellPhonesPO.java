@@ -81,7 +81,7 @@ public boolean isProductNameSortByDescending() {
 				ArrayList<Float> productUIList = new ArrayList<Float>();
 				
 				//Lay ra het tat ca cac ten san pham dang co tren UI
-				List<WebElement> productPriceText = getWebElements(driver, CellPhonesPageUI.PRODUCT_NAME_LIST);
+				List<WebElement> productPriceText = getWebElements(driver, CellPhonesPageUI.PRODUCT_PRICE_LIST);
 				
 				//Dung vong lap de getText va add vao ArrayList
 				for (WebElement productPrice : productPriceText) {
@@ -117,7 +117,7 @@ public boolean isProductNameSortByDescending() {
 				ArrayList<Float> productUIList = new ArrayList<Float>();
 			
 			//Lay ra het tat ca cac ten san pham dang co tren UI
-			List<WebElement> productPriceText = getWebElements(driver, CellPhonesPageUI.PRODUCT_NAME_LIST);
+			List<WebElement> productPriceText = getWebElements(driver, CellPhonesPageUI.PRODUCT_PRICE_LIST);
 			
 			//Dung vong lap de getText va add vao ArrayList
 			for (WebElement productPrice : productPriceText) {
