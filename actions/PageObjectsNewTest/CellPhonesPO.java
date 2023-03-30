@@ -75,8 +75,8 @@ public boolean isProductNameSortByDescending() {
 }
 
 
-				public boolean isProductPriceSortByAscending() {
-	//khai bao ra 1 arraylist de chua cac ten san pham tren UI
+			public boolean isProductPriceSortByAscending() {
+			//khai bao ra 1 arraylist de chua cac ten san pham tren UI
 			//Price nen chuyen sang dang Float
 				ArrayList<Float> productUIList = new ArrayList<Float>();
 				
@@ -92,8 +92,7 @@ public boolean isProductNameSortByDescending() {
 					
 					//Convert String sang kieu Float
 					Float priceTextFloat = Float.parseFloat(priceText);
-					
-					
+										
 					productUIList.add(priceTextFloat);
 					System.out.println("Product Name ở trên UI:"+priceTextFloat);
 
@@ -105,8 +104,7 @@ public boolean isProductNameSortByDescending() {
 				}
 				//Sort cai productSortList
 				Collections.sort(productSortList);
-				for (Float productName : productSortList) {
-					productUIList.add(productName);
+				for (Float productName : productSortList) {				
 					System.out.println("Product Name Sau Khi Sort Ascending:"+productName);
 				}
 				
@@ -143,14 +141,12 @@ public boolean isProductNameSortByDescending() {
 			}
 			//Sort cai productSortList
 			Collections.sort(productSortList);
-			for (Float productName : productSortList) {
-				productUIList.add(productName);
+			for (Float productName : productSortList) {				
 				System.out.println("Product Name Sau Khi Sort Ascending:"+productName);
 			}
 			//Reverse cai productSortList ( dao nguoc lai list)
 			Collections.reverse(productSortList);
 			for (Float productName : productSortList) {
-				productUIList.add(productName);
 				System.out.println("Product Name Sau Khi Reverse(Descending):"+productName);
 			}
 			return productSortList.equals(productUIList);
