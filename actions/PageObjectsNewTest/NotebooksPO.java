@@ -195,6 +195,10 @@ public boolean isProductNameSortByDescending() {
 					waitForElementInvisible(driver, NotebooksPageUI.NEXT_PAGE_ICON);				
 					return isElementUndisplayed(driver, NotebooksPageUI.NEXT_PAGE_ICON);
 				}
+				public boolean isPreviousPageIconDisplayed() {
+					waitForElementVisible(driver, NotebooksPageUI.PREVIOUS_PAGE_ICON);				
+					return isControlDisplayed(driver, NotebooksPageUI.PREVIOUS_PAGE_ICON);
+				}
 
 
 }
