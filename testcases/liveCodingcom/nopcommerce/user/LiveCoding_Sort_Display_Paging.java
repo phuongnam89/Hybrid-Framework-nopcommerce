@@ -13,10 +13,12 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import PageObjectsNewTest.CellPhonesPO;
+import PageObjectsNewTest.ComputersPO;
 import PageObjectsNewTest.ElectronicsPO;
 import PageObjectsNewTest.HomePO;
 import PageObjectsNewTest.LoginPO;
 import PageObjectsNewTest.MyAccountPO;
+import PageObjectsNewTest.NotebooksPO;
 import PageObjectsNewTest.PageGenerator;
 import PageObjectsNewTest.RegisterPO;
 import ReportConfig.ExtentTestManager;
@@ -75,7 +77,7 @@ public class LiveCoding_Sort_Display_Paging extends BaseTest{
 		cellPhonesPage.selectDefaultDropdownByID(driver, "products-orderby", "Name: A to Z");
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Sort: - Step 1: Verify");
-		verifyTrue(cellPhonesPage.isProductNameSortByAscending());
+		verifyTrue(cellPhonesPage.isProductNameSortByAscendingByLambda());
 
 	}
 	
@@ -86,7 +88,7 @@ public class LiveCoding_Sort_Display_Paging extends BaseTest{
 		cellPhonesPage.selectDefaultDropdownByID(driver, "products-orderby", "Name: Z to A");
 	
 		ExtentTestManager.getTest().log(Status.INFO, "Sort: - Step 1: Verify");
-		verifyTrue(cellPhonesPage.isProductNameSortByDescending());
+		verifyTrue(cellPhonesPage.isProductNameSortByDescendingByLambda());
 
 	}
 	
@@ -103,7 +105,7 @@ public class LiveCoding_Sort_Display_Paging extends BaseTest{
 	}
 	
 	@Test		
-	public void Sort_03_Price_High_To_Low(Method method) {
+	public void Sort_04_Price_High_To_Low(Method method) {
 		ExtentTestManager.startTest(method.getName(), "MyAccount: Address");
 		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
 		cellPhonesPage.selectDefaultDropdownByID(driver, "products-orderby", "Price: High to Low");
@@ -112,13 +114,39 @@ public class LiveCoding_Sort_Display_Paging extends BaseTest{
 		verifyTrue(cellPhonesPage.isProductPriceSortByDescending());
 		
 	}
-			
-	public void Login_05_WrongPassword(Method method) {
+	@Test		
+	public void Sort_05_Three_Products_Displayed_Per_Page(Method method) {
+		ExtentTestManager.startTest(method.getName(), "MyAccount: Address");
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		cellPhonesPage.clickToLinkByText(driver, "Computers ");
+	
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		computersPage = PageGenerator.getComputersPage(driver);
+		computersPage.clickToLinkByText(driver," Notebooks ");
 		
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
+		notebooksPage.selectDefaultDropdownByID(driver,"products-pagesize","3");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		verifyTrue(notebooksPage.isThreeProductsDislayedPerPage());
+		
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		verifyTrue(notebooksPage.isNextPageIconDisplayed());
 	}
-			
-	public void Login_06_Success_LogIn(Method method) {
+	@Test		
+	public void Sort_06_Six_Products_Displayed_Per_Page(Method method) {
+		ExtentTestManager.startTest(method.getName(), "MyAccount: Address");
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
+		notebooksPage.selectDefaultDropdownByID(driver,"products-pagesize","6");
 		
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		verifyTrue(notebooksPage.isSixProductsDislayedPerPage());
+		
+		ExtentTestManager.getTest().log(Status.INFO, "MyAccount: - Step 1: Click To Addresses Link");
+		verifyTrue(notebooksPage.isNextPageIconUnDisplayed());
+
 	}
 	@Parameters({"browser"})
 	@AfterClass(alwaysRun= true)
@@ -131,5 +159,7 @@ public class LiveCoding_Sort_Display_Paging extends BaseTest{
 	MyAccountPO myAccountPage;
 	ElectronicsPO electronicsPage;
 	CellPhonesPO cellPhonesPage;
+	ComputersPO computersPage;
+	NotebooksPO notebooksPage;
 	private String email,password;
 }

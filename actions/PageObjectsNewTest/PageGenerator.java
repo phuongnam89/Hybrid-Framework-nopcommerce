@@ -32,4 +32,10 @@ WebDriver driver;
 			return new CellPhonesPO(driver);
 	
 	}
+		public static ComputersPO getComputersPage(WebDriver driver) {
+			return new ComputersPO(driver);
+}
+		public static NotebooksPO getNotebooksPage(WebDriver driver) {
+			return new NotebooksPO(driver);
+		}		
 }

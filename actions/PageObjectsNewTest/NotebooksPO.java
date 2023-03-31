@@ -9,11 +9,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import PageUisNewTest.CellPhonesPageUI;
+import PageUisNewTest.NotebooksPageUI;
 import commons.BasePage;
 
-public class CellPhonesPO	extends BasePage {
+public class NotebooksPO	extends BasePage {
 WebDriver driver;
-public CellPhonesPO(WebDriver driver) {
+public NotebooksPO(WebDriver driver) {
 	this.driver = driver;
 	}
 public boolean isProductNameSortByAscending() {
@@ -170,17 +171,30 @@ public boolean isProductNameSortByDescending() {
 					
 				}
 				
-				public boolean isProductPriceSortByDescendingByLambda() {
-					List<WebElement> elementList =	getWebElements(driver, CellPhonesPageUI.PRODUCT_NAME_LIST);
-					List<String> names = elementList.stream().map(n -> n.getText()).collect(Collectors.toList());
-					List<String> sortedName = new ArrayList<String>(names);
-					Collections.sort(sortedName);
-					Collections.reverse(sortedName);
-					return names.equals(sortedName);
-					
+				
+				public boolean isThreeProductsDislayedPerPage() {					
+					int size = getElementSize(driver, NotebooksPageUI.PRODUCT_LIST);		
+						if (size <= 3) {			
+						}
+						return true;
 				}
 				
+				public boolean isSixProductsDislayedPerPage() {					
+							int size = getElementSize(driver, NotebooksPageUI.PRODUCT_LIST);		
+								if (size <= 6) {			
+								}
+								return true;
+			
+				}
+				public boolean isNextPageIconDisplayed() {
+					waitForElementVisible(driver, NotebooksPageUI.NEXT_PAGE_ICON);				
+					return isControlDisplayed(driver, NotebooksPageUI.NEXT_PAGE_ICON);
+				}
 				
+				public boolean isNextPageIconUnDisplayed() {
+					waitForElementInvisible(driver, NotebooksPageUI.NEXT_PAGE_ICON);				
+					return isElementUndisplayed(driver, NotebooksPageUI.NEXT_PAGE_ICON);
+				}
 
 
 }

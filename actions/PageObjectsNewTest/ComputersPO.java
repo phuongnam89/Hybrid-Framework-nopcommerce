@@ -11,9 +11,9 @@ import org.openqa.selenium.WebElement;
 import PageUisNewTest.CellPhonesPageUI;
 import commons.BasePage;
 
-public class CellPhonesPO	extends BasePage {
+public class ComputersPO	extends BasePage {
 WebDriver driver;
-public CellPhonesPO(WebDriver driver) {
+public ComputersPO(WebDriver driver) {
 	this.driver = driver;
 	}
 public boolean isProductNameSortByAscending() {
