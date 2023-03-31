@@ -88,7 +88,7 @@ public boolean isProductNameSortByDescending() {
 					String priceText = productPrice.getText();
 					
 					//xóa kí tự $ đi
-					priceText.replace("$", "");
+					priceText = priceText.replace("$", "");
 					
 					//Convert String sang kieu Float
 					Float priceTextFloat = Float.parseFloat(priceText);
@@ -124,7 +124,7 @@ public boolean isProductNameSortByDescending() {
 				String priceText = productPrice.getText();
 				
 				//xóa kí tự $ đi
-				priceText.replace("$", "");
+				priceText = priceText.replace("$","");
 				
 				//Convert String sang kieu Float
 				Float priceTextFloat = Float.parseFloat(priceText);
