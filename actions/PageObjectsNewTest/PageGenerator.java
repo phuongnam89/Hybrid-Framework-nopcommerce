@@ -37,5 +37,11 @@ WebDriver driver;
 }
 		public static NotebooksPO getNotebooksPage(WebDriver driver) {
 			return new NotebooksPO(driver);
+		}
+		public static CompareProductsPO getCompareProductsPage(WebDriver driver) {
+			return new CompareProductsPO(driver);
+		}
+		public static RecentlyViewedProductsPO getRecentlyViewedProductsPage(WebDriver driver) {
+			return new RecentlyViewedProductsPO(driver);
 		}		
 }

@@ -12,13 +12,18 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
 
+import PageObjectsNewTest.CompareProductsPO;
+import PageObjectsNewTest.ComputersPO;
 import PageObjectsNewTest.HomePO;
 import PageObjectsNewTest.LoginPO;
 import PageObjectsNewTest.MyAccountPO;
+import PageObjectsNewTest.NotebooksPO;
 import PageObjectsNewTest.PageGenerator;
+import PageObjectsNewTest.RecentlyViewedProductsPO;
 import PageObjectsNewTest.RegisterPO;
 import PageObjectsNewTest.ShoppingCartPO;
 import PageObjectsNewTest.WishlistPO;
+import PageUisNewTest.NotebooksPageUI;
 import ReportConfig.ExtentTestManager;
 import commons.BaseTest;
 
@@ -121,10 +126,108 @@ public class LiveCoding_Wishlist extends BaseTest{
 		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 6: Verify Apple MacBook Pro 13-inch remove from Wishlist Success");
 		wishlistPage = PageGenerator.getWishlistPage(driver);
 		verifyEquals(wishlistPage.getMessageByClass(driver,"no-data"),"The wishlist is empty!");
-		
-
-
 	}
+	
+		@Test
+		public void Wishlist_03_Add_product_To_Compare(Method method) {	
+		ExtentTestManager.startTest(method.getName(), "Wishlist: Add Product to Cart From Wishlist Page");
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		wishlistPage.clickToLogoNopcommerce(driver);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		homePage = PageGenerator.getHomePage(driver);
+		homePage.clickToButtonByProductNameAndButtonName(driver, "Apple MacBook Pro 13-inch", "Add to compare list");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		homePage.clickToButtonByProductNameAndButtonName(driver, "$25 Virtual Gift Card", "Add to compare list");
+	
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		verifyEquals(homePage.getSuccessMessageByClass(driver,"content"),"The product has been added to your product comparison");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		homePage.clickToLinkByText(driver, "product comparison");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		compareProductsPage = PageGenerator.getCompareProductsPage(driver);
+		verifyEquals(compareProductsPage.isValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "2","3"),"$25 Virtual Gift Card");
+		verifyEquals(compareProductsPage.isValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "2","4"),"$25.00");
+		//verifyEquals(compareProductsPage.isValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "3","3"),"Apple MacBook Pro 13-inch");
+		//verifyEquals(compareProductsPage.isValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "3","4"),"$1,800.00");
+
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		compareProductsPage.clickToLinkByText(driver, "Clear list");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		verifyEquals(compareProductsPage.getMessageByClass(driver, "no-data"),"You have no items to compare.");
+				
+		}
+		@Test
+		public void Wishlist_04_Recently_viewed_products(Method method) {	
+		ExtentTestManager.startTest(method.getName(), "Wishlist: Add Product to Cart From Wishlist Page");
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		compareProductsPage.clickToLogoNopcommerce(driver);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		homePage = PageGenerator.getHomePage(driver);
+		homePage.clickToLinkByText(driver, "Computers ");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		computerPage = PageGenerator.getComputersPage(driver);
+		computerPage.clickToLinkByText(driver, " Notebooks ");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
+		notebooksPage.clickToProductTitleLink(driver, "Apple MacBook Pro 13-inch");
+		
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.backtoPage(driver);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.clickToProductTitleLink(driver, "Asus N551JK-XO076H Laptop");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.backtoPage(driver);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.clickToProductTitleLink(driver, "HP Envy 6-1180ca 15.6-Inch Sleekbook");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.backtoPage(driver);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.clickToProductTitleLink(driver, "HP Spectre XT Pro UltraBook");
+
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.backtoPage(driver);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.clickToProductTitleLink(driver, "Lenovo Thinkpad X1 Carbon Laptop");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.backtoPage(driver);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.clickToProductTitleLink(driver, "Samsung Series 9 NP900X4C Premium Ultrabook");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.backtoPage(driver);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage.clickToLinkByText(driver, "Recently viewed products");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		recentlyViewedProductsPage = PageGenerator.getRecentlyViewedProductsPage(driver);
+		verifyTrue(recentlyViewedProductsPage.isProductsTittleLinkDisplayedByText(driver,"Samsung Series 9 NP900X4C Premium Ultrabook"));
+		verifyTrue(recentlyViewedProductsPage.isProductsTittleLinkDisplayedByText(driver,"Lenovo Thinkpad X1 Carbon Laptop"));
+		verifyTrue(recentlyViewedProductsPage.isProductsTittleLinkDisplayedByText(driver,"HP Spectre XT Pro UltraBook"));
+//		verifyFalse(recentlyViewedProductsPage.isProductsTittleLinkDisplayedByText(driver,"Apple MacBook Pro 13-inch"));
+//		verifyFalse(recentlyViewedProductsPage.isProductsTittleLinkDisplayedByText(driver,"Asus N551JK-XO076H Laptop"));
+//		verifyFalse(recentlyViewedProductsPage.isProductsTittleLinkDisplayedByText(driver,"HP Envy 6-1180ca 15.6-Inch Sleekbook"));
+
+		
+		
+		}
 	@Parameters({"browser"})
 	@AfterClass(alwaysRun= true)
 		public void cleanBrowser(String browsername) {
@@ -136,5 +239,9 @@ public class LiveCoding_Wishlist extends BaseTest{
 	MyAccountPO myAccountPage;
 	WishlistPO wishlistPage;
 	ShoppingCartPO shoppingCartPage;
+	CompareProductsPO compareProductsPage;
+	ComputersPO computerPage;
+	NotebooksPO notebooksPage;
+	RecentlyViewedProductsPO recentlyViewedProductsPage;
 	private String email,newEmail,password,newPassword;
 }

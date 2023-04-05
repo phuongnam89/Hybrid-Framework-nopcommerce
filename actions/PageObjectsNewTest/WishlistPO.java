@@ -26,6 +26,10 @@ public String getWishlistValue(WebDriver driver) {
 	
 
 }
+public void clickToLogoNopcommerce(WebDriver driver2, String email) {
+	// TODO Auto-generated method stub
+	
+}
 
 
 }

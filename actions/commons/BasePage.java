@@ -832,7 +832,7 @@ public class BasePage {
 		 * @return
 		 */
 		public boolean checkLinkDisplayedByText(WebDriver driver, String textValue) {
-			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
+			//waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
 			return isElementDisplayed(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
 			
 		}
@@ -852,6 +852,16 @@ public class BasePage {
 		public void clickToButtonByID(WebDriver driver, String idValue) {
 			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_BUTTON_BY_ID, idValue);
 			clickToElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_BUTTON_BY_ID, idValue);
+		}
+		
+		public void clickToProductTitleLink(WebDriver driver, String textValue) {
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_PRODUCT_TITTLE, textValue);
+			clickToElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_PRODUCT_TITTLE, textValue);
+
+		}
+		public boolean isProductsTittleLinkDisplayedByText(WebDriver driver, String textValue) {
+			//waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_TEXT, textValue);
+			return isElementDisplayed(driver, BasePageUI.LIVE_CODING_DYNAMIC_LINK_BY_PRODUCT_TITTLE, textValue);
 		}
 		
 		/**Get Error Message By ID
@@ -997,9 +1007,12 @@ public class BasePage {
 		 * @param rowIndex
 		 */
 		public void clickToAddToCartCheckBoxInTableClassAtColumnNameAndRowIndex(WebDriver driver, String tableClass, String headerName,String rowIndex) {
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 			int columnIndex = getElementSize(driver, BasePageUI.LIVE_CODING_DYNAMIC_HEADER_BY_ID_AND_TEXT_NAME, tableClass,headerName)+1;		
 			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,rowIndex,String.valueOf(columnIndex));
 			checkToDefaultCheckBoxOrRadio(driver, BasePageUI.LIVE_CODING_DYNAMIC_CHECK_BOX_BY_COLUMN_INDEX_AND_ROW_INDEX, tableClass,rowIndex,String.valueOf(columnIndex));
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
 		}
 		
 		/**Sort By Ascending
@@ -1030,7 +1043,24 @@ public class BasePage {
 			Collections.reverse(sortedName);
 			return names.equals(sortedName);
 		}
-}	
+		
+		
+		/**Header Logo
+		 * @param driver
+		 */
+		public void clickToLogoNopcommerce (WebDriver driver) {
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_HEADER_LOGO);
+			clickToElement(driver, BasePageUI.LIVE_CODING_HEADER_LOGO);
+			
+}
+		public void clickToButtonByProductNameAndButtonName(WebDriver driver, String...dynamicValues) {
+			waitForElementClickable(driver, BasePageUI.LIVE_CODING_DYNAMIC_BUTTON_BY_PRODUCT_NAME_AND_BUTTON_NAME, dynamicValues);
+			clickToElement(driver, BasePageUI.LIVE_CODING_DYNAMIC_BUTTON_BY_PRODUCT_NAME_AND_BUTTON_NAME, dynamicValues);
+		}
+}
+
+
+
 
 
 	

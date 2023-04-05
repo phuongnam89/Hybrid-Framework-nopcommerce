@@ -27,7 +27,9 @@ public class BasePageUI extends BasePage {
 	public static final String LIVE_CODING_DYNAMIC_LINK_BY_TEXT = "xpath=//a[text()='%s']";
 	public static final String LIVE_CODING_DYNAMIC_LINK_BY_SPAN_TEXT = "xpath=//span[text()='%s']";
 	public static final String LIVE_CODING_DYNAMIC_LINK_BY_CLASS = "xpath=//a[@class='%s']";
+	public static final String LIVE_CODING_DYNAMIC_LINK_BY_PRODUCT_TITTLE = "xpath=//h2[@class='product-title']/a[text()='%s']";
 
+	
 	public static final String LIVE_CODING_DYNAMIC_RADIO_BY_ID = "xpath=//input[@id='%s']";
 	public static final String LIVE_CODING_DYNAMIC_CHECKBOX_BY_ID = "xpath=//input[@id='%s']";
 	public static final String LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ID = "xpath=//input[@id='%s']";
@@ -44,10 +46,11 @@ public class BasePageUI extends BasePage {
 	public static final String LIVE_CODING_DYNAMIC_HEADER_BY_ID_AND_TEXT_NAME = "xpath=//table[@class='%s']//th[text()='%s']//preceding-sibling::th";
 	public static final String LIVE_CODING_DYNAMIC_ROW_BY_COLUMN_INDEX_AND_ROW_INDEX = "xpath=//table[@class='%s']//tbody/tr[%s]/td[%s]";
 	public static final String LIVE_CODING_DYNAMIC_CHECK_BOX_BY_COLUMN_INDEX_AND_ROW_INDEX = "xpath=//table[@class='%s']//tbody/tr[%s]/td[%s]//input";
-
+	public static final String LIVE_CODING_DYNAMIC_BUTTON_BY_PRODUCT_NAME_AND_BUTTON_NAME = "xpath=//a[text()='%s']/parent::h2//following-sibling::div[@class='add-info']//div[@class='buttons']/button[text()='%s']";
 	
 	//Hard Locator
 	public static final String LIVE_CODING_DYNAMIC_CLOSE_ICON_AT_SUCCESS_MESSAGE = "xpath=//span[@class='close']";
+	public static final String LIVE_CODING_HEADER_LOGO = "xpath=//img[@alt='nopCommerce demo store']";
 
 }
 

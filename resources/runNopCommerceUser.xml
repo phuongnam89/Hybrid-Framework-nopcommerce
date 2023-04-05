@@ -12,7 +12,7 @@
   <test name="Run On Firefox">
   <parameter name="browser" value="firefox"/>
     <classes>
-    <class name="liveCodingcom.nopcommerce.user.LiveCoding_Sort_Display_Paging"/>  
+    <class name="liveCodingcom.nopcommerce.user.LiveCoding_Wishlist"/>  
    </classes>    
   </test> <!-- Test -->
   
@@ -21,7 +21,7 @@
   <test name="Run On Chrome">
   <parameter name="browser" value="chrome"/>
     <classes>
-    <class name="liveCodingcom.nopcommerce.user.LiveCoding_Sort_Display_Paging"/>  
+    <class name="liveCodingcom.nopcommerce.user.LiveCoding_Wishlist"/>  
    </classes>    
   </test> <!-- Test -->
   
