@@ -14,6 +14,7 @@ import com.aventstack.extentreports.Status;
 
 import PageObjectsNewTest.CompareProductsPO;
 import PageObjectsNewTest.ComputersPO;
+import PageObjectsNewTest.DestopsPO;
 import PageObjectsNewTest.HomePO;
 import PageObjectsNewTest.LoginPO;
 import PageObjectsNewTest.MyAccountPO;
@@ -69,6 +70,7 @@ public class LiveCoding_Order extends BaseTest{
 		public void Order_01_Add_product_to_cart(Method method) {
 		ExtentTestManager.startTest(method.getName(), "Order: Add produt to cart");
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage = PageGenerator.getDestopsPage(driver);
 		
 		
 		
@@ -107,5 +109,6 @@ public class LiveCoding_Order extends BaseTest{
 	ComputersPO computerPage;
 	NotebooksPO notebooksPage;
 	RecentlyViewedProductsPO recentlyViewedProductsPage;
+	DestopsPO destopsPage;
 	private String email,newEmail,password,newPassword;
 }

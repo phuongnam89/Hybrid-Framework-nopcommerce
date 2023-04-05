@@ -43,5 +43,9 @@ WebDriver driver;
 		}
 		public static RecentlyViewedProductsPO getRecentlyViewedProductsPage(WebDriver driver) {
 			return new RecentlyViewedProductsPO(driver);
+		}	
+		public static DestopsPO getDestopsPage(WebDriver driver) {
+			return new DestopsPO(driver);
 		}		
 }
+
