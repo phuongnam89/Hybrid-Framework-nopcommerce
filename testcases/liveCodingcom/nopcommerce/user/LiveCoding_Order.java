@@ -71,8 +71,32 @@ public class LiveCoding_Order extends BaseTest{
 		ExtentTestManager.startTest(method.getName(), "Order: Add produt to cart");
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
 		destopsPage = PageGenerator.getDestopsPage(driver);
+		destopsPage.selectDefaultDropdownByID(driver,"product_attribute_1","2.5 GHz Intel Pentium Dual-Core E2200 [+$15.00]");
 		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage.selectDefaultDropdownByID(driver,"product_attribute_2","8GB [+$60.00]");
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage.checkToRadioByID(driver, "product_attribute_3_7");
 		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage.checkToRadioByID(driver, "product_attribute_4_9");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage.checkToRadioByID(driver, "product_attribute_4_9");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage.checkToCheckboxByID(driver, "product_attribute_5_10");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage.checkToCheckboxByID(driver, "product_attribute_5_11");
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage.checkToCheckboxByID(driver, "product_attribute_5_12");
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage.clickToButtonByID(driver, "add-to-cart-button-1");
+
 		
 	}
 	
