@@ -63,7 +63,7 @@ public class LiveCoding_Order extends BaseTest{
 		loginPage.enterToTextboxByID(driver, "Password", password);
 		loginPage.clickToButtonByText(driver, "Log in");
 		homePage = PageGenerator.getHomePage(driver);
-
+		homePage.clickToLinkByText(driver, "Build your own computer");
 	}
 	@Test
 		public void Order_01_Add_product_to_cart(Method method) {
