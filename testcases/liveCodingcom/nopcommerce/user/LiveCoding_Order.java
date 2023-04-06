@@ -93,14 +93,41 @@ public class LiveCoding_Order extends BaseTest{
 
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
 		destopsPage.checkToCheckboxByID(driver, "product_attribute_5_12");
-
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		verifyEquals(destopsPage.getErrorMessageByID(driver, "price-value-1"), "$1,450.00");
+		
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
 		destopsPage.clickToButtonByID(driver, "add-to-cart-button-1");
-
 		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		verifyEquals(destopsPage.getSuccessMessageByClass(driver, "content"), "The product has been added to your shopping cart");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		destopsPage.clickToLinkByText(driver, "shopping cart");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		//verifyEquals(destopsPage.getValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "cart", "Product(s)", "1"),"Build your own computer");
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
+		verifyEquals(shoppingCartPage.getValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "cart", "Price", "1"),"$1,450.00");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");
+		verifyTrue(shoppingCartPage.isProductNameDisplayed(driver));
+
 	}
-	
-	public void Wishlist_02_Add_product_To_Cart_From_Wishlist_Page(Method method) {
+	@Test
+	public void Order_03_Add_product_to_cart(Method method) {
+		ExtentTestManager.startTest(method.getName(), "Order: Add produt to cart");
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		shoppingCartPage.clickToRemoveButton(driver);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		verifyEquals(shoppingCartPage.getMessageByClass(driver, "no-data"),"Your Shopping Cart is empty!");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		verifyFalse(shoppingCartPage.isProductNameDisplayed(driver));
 		
 	}
 	
