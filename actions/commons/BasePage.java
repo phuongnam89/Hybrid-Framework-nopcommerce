@@ -808,6 +808,12 @@ public class BasePage {
 			return getElementAttribute(driver, BasePageUI.LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ID,attributeName, textboxID);
 		}
 		
+		public Object getElementAttributeValueByClass(WebDriver driver,String textboxClass, String attributeName) {
+			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ClASS, textboxClass);		
+			return getElementAttribute(driver, BasePageUI.LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ClASS,attributeName, textboxClass);
+		}
+		
+		
 		/**Click To Link By Text
 		 * @param driver
 		 * @param textValue

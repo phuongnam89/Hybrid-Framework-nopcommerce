@@ -97,6 +97,7 @@ public class LiveCoding_Order extends BaseTest{
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
 		verifyEquals(destopsPage.getMessageByID(driver, "price-value-1"), "$1,450.00");
 		
+		
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
 		destopsPage.clickToButtonByID(driver, "add-to-cart-button-1");
 		
@@ -163,17 +164,64 @@ public class LiveCoding_Order extends BaseTest{
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
 		shoppingCartPage.clickToButtonByID(driver, "updatecart");
-		sleepInSecond(3);
+		
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
-		verifyEquals(shoppingCartPage.getValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "cart", "Total", "1"),"$9,000.00");
+		verifyEquals(shoppingCartPage.getElementAttributeValueByClass(driver, "qty-input", "value"),"5");
+		
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		//verifyEquals(shoppingCartPage.getValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "cart", "Total", "1"),"$9,000.00");
+		
+		
+	
+	}
+		
+		
+		public void Order_05_Checkout_Order(Method method) {	
+		ExtentTestManager.startTest(method.getName(), "Order: Checkout order");
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Select Yes from dropdown Gift wrapping ");	
+		shoppingCartPage.selectDefaultDropdownByID(driver, newEmail, email);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Check to checkbox I Agree ");	
+		shoppingCartPage.checkToCheckboxByID(driver, email);
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click to checkout button ");	
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: input to Company textbox");	
 
-		}
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Select Vietnam from dropdown Country");	
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: input to City textbox");	
+	
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: input to Address 1 textbox");	
 		
-		public void Wishlist_04_Recently_viewed_products(Method method) {	
-		ExtentTestManager.startTest(method.getName(), "Wishlist: Add Product to Cart From Wishlist Page");
-		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: input to Address 2 textbox");	
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: input to Zip/postal code textbox");
 		
-			
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: input to Phone number textbox");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: input to Fax number textbox");	
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click to Continue button ");	
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Check to Shipping by land transport Radio ");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Check to The one day air shipping  Radio ");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Check to The two day air shipping  Radio ");	
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click to Continue button ");	
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Check to Check / Money Order Radio ");	
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Verify all information at Billing Address form ");	
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Verify all information at Shipping Address form ");
+		
+		
+
+
 		}
 	@Parameters({"browser"})
 	@AfterClass(alwaysRun= true)

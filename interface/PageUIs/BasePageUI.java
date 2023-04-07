@@ -32,6 +32,7 @@ public class BasePageUI extends BasePage {
 	
 	public static final String LIVE_CODING_DYNAMIC_RADIO_BY_ID = "xpath=//input[@id='%s']";
 	public static final String LIVE_CODING_DYNAMIC_CHECKBOX_BY_ID = "xpath=//input[@id='%s']";
+	public static final String LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ClASS = "xpath=//input[@class='%s']";
 	public static final String LIVE_CODING_DYNAMIC_TEXT_BOX_BY_ID = "xpath=//input[@id='%s']";
 	public static final String LIVE_CODING_DYNAMIC_COMMEND_TEXT_BOX_BY_ID = "xpath=//textarea[@id='%s']";
 	public static final String LIVE_CODING_DYNAMIC_GET_ERROR_MESSAGE_BY_ID = "xpath=//span[@id='%s']";
