@@ -95,7 +95,7 @@ public class LiveCoding_Order extends BaseTest{
 		destopsPage.checkToCheckboxByID(driver, "product_attribute_5_12");
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
-		verifyEquals(destopsPage.getErrorMessageByID(driver, "price-value-1"), "$1,450.00");
+		verifyEquals(destopsPage.getMessageByID(driver, "price-value-1"), "$1,450.00");
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
 		destopsPage.clickToButtonByID(driver, "add-to-cart-button-1");
@@ -126,17 +126,47 @@ public class LiveCoding_Order extends BaseTest{
 		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
 		verifyEquals(shoppingCartPage.getMessageByClass(driver, "no-data"),"Your Shopping Cart is empty!");
 		
-		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
-		verifyFalse(shoppingCartPage.isProductNameDisplayed(driver));
 		
 	}
 	
-	
-		public void Wishlist_03_Add_product_To_Compare(Method method) {	
+	@Test
+		public void Order_04_Updated_Shopping_Cart(Method method) {	
 		ExtentTestManager.startTest(method.getName(), "Wishlist: Add Product to Cart From Wishlist Page");
 		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		shoppingCartPage.clickToLogoNopcommerce(driver);
 		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		homePage.clickToLinkByText(driver, "Apple MacBook Pro 13-inch");
 		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");	
+		notebooksPage = PageGenerator.getNotebooksPage(driver);
+		verifyEquals(notebooksPage.getMessageByID(driver, "price-value-4"), "$1,800.00");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Wishlist: - Step 1: Open Wishlist Page");
+		notebooksPage.clickToButtonByID(driver, "add-to-cart-button-4");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		verifyEquals(notebooksPage.getSuccessMessageByClass(driver, "content"), "The product has been added to your shopping cart");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		notebooksPage.clickToLinkByText(driver, "shopping cart");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		shoppingCartPage = PageGenerator.getShoppingCartPage(driver);
+		verifyEquals(shoppingCartPage.getValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "cart", "Price", "1"),"$1,800.00");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		verifyEquals(shoppingCartPage.getValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "cart", "Total", "1"),"$3,600.00");
+
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		shoppingCartPage.inputToQuantityTextbox(driver,"5");
+		
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		shoppingCartPage.clickToButtonByID(driver, "updatecart");
+		sleepInSecond(3);
+		ExtentTestManager.getTest().log(Status.INFO, "Order: - Step 1: Click To Apple MacBook Pro 13-inch Link");	
+		verifyEquals(shoppingCartPage.getValueDisplayedInTableClassAtColumnNameAndRowIndex(driver, "cart", "Total", "1"),"$9,000.00");
+
 		}
 		
 		public void Wishlist_04_Recently_viewed_products(Method method) {	

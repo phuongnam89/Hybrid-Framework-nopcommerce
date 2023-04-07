@@ -869,7 +869,7 @@ public class BasePage {
 		 * @param idValue
 		 * @return
 		 */
-		public String getErrorMessageByID(WebDriver driver, String idValue) {
+		public String getMessageByID(WebDriver driver, String idValue) {
 			waitForElementVisible(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_ERROR_MESSAGE_BY_ID, idValue);
 			return getElementText(driver, BasePageUI.LIVE_CODING_DYNAMIC_GET_ERROR_MESSAGE_BY_ID, idValue).trim();
 		}

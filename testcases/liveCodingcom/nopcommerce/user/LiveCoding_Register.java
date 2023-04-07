@@ -49,11 +49,11 @@ public class LiveCoding_Register extends BaseTest{
 			registerPage.clickToButtonByID(driver,"register-button");
 			
 			ExtentTestManager.getTest().log(Status.INFO, "Register: - Step 3: Verify all error messages");	
-			Assert.assertEquals(registerPage.getErrorMessageByID(driver,"FirstName-error"), "First name is required.");
-			Assert.assertEquals(registerPage.getErrorMessageByID(driver,"LastName-error"), "Last name is required.");
-			Assert.assertEquals(registerPage.getErrorMessageByID(driver,"Email-error"), "Email is required.");
-			Assert.assertEquals(registerPage.getErrorMessageByID(driver,"Password-error"),"Password is required.");
-			Assert.assertEquals(registerPage.getErrorMessageByID(driver,"ConfirmPassword-error"),"Password is required.");
+			Assert.assertEquals(registerPage.getMessageByID(driver,"FirstName-error"), "First name is required.");
+			Assert.assertEquals(registerPage.getMessageByID(driver,"LastName-error"), "Last name is required.");
+			Assert.assertEquals(registerPage.getMessageByID(driver,"Email-error"), "Email is required.");
+			Assert.assertEquals(registerPage.getMessageByID(driver,"Password-error"),"Password is required.");
+			Assert.assertEquals(registerPage.getMessageByID(driver,"ConfirmPassword-error"),"Password is required.");
 		}
 	
 	@Test
@@ -63,7 +63,7 @@ public class LiveCoding_Register extends BaseTest{
 		registerPage.enterToTextboxByID(driver,"Email","a");
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Register: - Step 2: Verify error message");	
-		Assert.assertEquals(registerPage.getErrorMessageByID(driver,"Email-error"),"Wrong email");
+		Assert.assertEquals(registerPage.getMessageByID(driver,"Email-error"),"Wrong email");
 	}
 	
 	@Test
@@ -73,7 +73,7 @@ public class LiveCoding_Register extends BaseTest{
 		registerPage.enterToTextboxByID(driver,"Password","a");
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Register: - Step 4: Verify error message");	
-		Assert.assertEquals(registerPage.getErrorMessageByID(driver,"Password-error"),"Password must meet the following rules:\nmust have at least 6 characters");
+		Assert.assertEquals(registerPage.getMessageByID(driver,"Password-error"),"Password must meet the following rules:\nmust have at least 6 characters");
 	}
 	@Test
 	public void Register_04_Success_Register(Method method) {
@@ -170,7 +170,7 @@ public class LiveCoding_Register extends BaseTest{
 		registerPage.clickToButtonByID(driver,"register-button");
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Register: - Step 3: Verify error message");	
-		verifyEquals(registerPage.getErrorMessageByID(driver,"ConfirmPassword-error"),"The password and confirmation password do not match.");		
+		verifyEquals(registerPage.getMessageByID(driver,"ConfirmPassword-error"),"The password and confirmation password do not match.");		
 	}
 	
 	@Parameters({"browser"})

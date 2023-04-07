@@ -58,7 +58,7 @@ public class LiveCoding_Login extends BaseTest{
 		loginPage.clickToButtonByText(driver, "Log in");
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Login: - Step 2: Verify Error Message");
-		verifyEquals(loginPage.getErrorMessageByID(driver, "Email-error"),"Please enter your email");
+		verifyEquals(loginPage.getMessageByID(driver, "Email-error"),"Please enter your email");
 		
 	}
 	
@@ -69,7 +69,7 @@ public class LiveCoding_Login extends BaseTest{
 		loginPage.enterToTextboxByID(driver, "Email", "a");
 		
 		ExtentTestManager.getTest().log(Status.INFO, "Login: - Step 1: Verify Error Message");
-		verifyEquals(loginPage.getErrorMessageByID(driver, "Email-error"),"Wrong email");
+		verifyEquals(loginPage.getMessageByID(driver, "Email-error"),"Wrong email");
 
 	}
 	
